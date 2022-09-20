@@ -1,8 +1,8 @@
 #!\Users\fgonz\scoop\shims\nu.EXE
 # Script to edit an exercise by number
 let file = "resolved.nuon";
-def main [x : string] {
-  let y = if ($x == "last") {
+def main [x? : string] {
+  let y = if ($x == $nothing) {
       (open $file | get resolved) + 1
   } else {
     $x

@@ -45,8 +45,10 @@ pub fn main() void {
 
     // Let's find the first language with a three-letter name and
     // return it from the for loop.
-    const current_lang: ?[]const u8 = for (langs) |lang| {
-        if (lang.len == 3) break lang;
+    const current_lang: ?[]const u8 = outer: for (langs) |lang| {
+        if (lang.len == 3) break :outer lang;
+    } else {
+        break :outer null;
     };
 
     if (current_lang) |cl| {
@@ -54,4 +56,5 @@ pub fn main() void {
     } else {
         print("Did not find a three-letter language name. :-(\n", .{});
     }
+    return;
 }
