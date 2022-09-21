@@ -101,7 +101,7 @@ pub fn main() void {
     // tiny example, but it would be downright criminal in a real
     // application!
     const wanted_ingredients = [_]u8{ 0, 3 }; // Chili, Cheese
-
+    const default_meal = menu[0];
     // Look at each Food on the menu...
     const meal = food_loop: for (menu) |food| {
 
@@ -128,8 +128,11 @@ pub fn main() void {
         // wanted for this Food.
         //
         // Please return this Food from the loop.
-        break;
+        break :food_loop food;
+    } else {
+        break :food_loop default_meal;
     };
+
     // ^ Oops! We forgot to return Mac & Cheese as the default
     // Food when the requested ingredients aren't found.
 
