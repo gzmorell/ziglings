@@ -48,8 +48,8 @@ const Path = struct {
 // instead.
 //
 // Please fill in the body of this function!
-fn makePath(from: *Place, to: *Place, dist: u8) Path {
-
+fn makePath(comptime from: *Place, comptime to: *Place, comptime dist: u8) Path {
+    return Path{ .from = from, .to = to, .dist = dist };
 }
 
 // Using our new function, these path definitions take up considerably less
@@ -151,8 +151,8 @@ const HermitsNotebook = struct {
 };
 
 pub fn main() void {
-    const start = &a;        // Archer's Point
-    const destination = &f;  // Fox Pond
+    const start = &a; // Archer's Point
+    const destination = &f; // Fox Pond
 
     // We could either have this:
     //
